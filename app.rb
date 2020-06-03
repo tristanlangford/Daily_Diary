@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require_relative './lib/diary'
 
 class DailyDiary < Sinatra::Base
 
@@ -11,6 +12,7 @@ class DailyDiary < Sinatra::Base
   end
 
   get ("/view_titles") do
+    @entries = Diary.all
     erb(:view_titles)
   end
 

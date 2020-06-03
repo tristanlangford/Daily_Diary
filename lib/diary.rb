@@ -1,18 +1,30 @@
 require 'pg'
 require 'sinatra'
+require_relative 'entry'
 
 class Diary
 
-  def view_titles
+  def self.all
+    con = set_database
+
+    entries = con.exec "SELECT * FROM entries"
+
+    entries.map { |entry| Entry.new(entry['id'], entry['title'], entry['body'], entry['date'], entry['tag']) }
+  end
+
+  def self.add(title, body, date, tag)
+    con = set_database
+
+    entries = con.exec "INSERT INTO entries (title, body, date, tag) VALUES('#{title}', '#{body}', '#{date}', #{tag})"
+
+  end
+
+  def self.set_database
     if ENV['RACK_ENV'] == 'test'
-      con = PG.connect :dbname => "Diary_Test"
+      PG.connect :dbname => "Diary_Test"
     else
-      con = PG.connect :dbname => "Diary"
+      PG.connect :dbname => "Diary"
     end
-
-    titles = con.exec "SELECT * FROM entries"
-
-    titles.map { |entry| entry['title'] }
   end
 
 end

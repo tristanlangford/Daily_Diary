@@ -36,4 +36,19 @@ class DailyDiary < Sinatra::Base
     erb(:view_entry)
   end
 
+  get "/edit_entry" do
+    @entry = Diary.find_by_id(params[:id])
+    erb(:edit_entry)
+  end
+
+  post "/edit" do
+    Diary.edit(params[:id], params[:title], params[:body], params[:date], params[:tag])
+    redirect "/view_entry?id=#{params[:id]}"
+  end
+
+  post "/delete" do
+    Diary.delete(params[:id])
+    redirect "/view_titles"
+  end
+
 end

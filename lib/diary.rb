@@ -6,7 +6,7 @@ class Diary
 
   def self.all
     con = set_database
-    entries = con.exec "SELECT * FROM entries"
+    entries = con.exec "SELECT * FROM entries ORDER BY date DESC"
     entries.map { |entry| Entry.new(entry['id'], entry['title'], entry['body'], entry['date'], entry['tag']) }
   end
 
@@ -17,7 +17,17 @@ class Diary
 
   def self.add(title, body, date, tag)
     con = set_database
-    entries = con.exec "INSERT INTO entries (title, body, date, tag) VALUES('#{title}', '#{body}', '#{date}', #{tag})"
+    entries = con.exec "INSERT INTO entries (title, body, date, tag) VALUES ('#{title}', '#{body}', '#{date}', #{tag})"
+  end
+
+  def self.edit(id, title, body, date, tag)
+    con = set_database
+    entries = con.exec "UPDATE entries SET title = '#{title}', body = '#{body}', date = '#{date}', tag = #{tag} WHERE id = #{id}"
+  end
+
+  def self.delete(id)
+    con = set_database
+    con.exec "DELETE FROM entries WHERE id = #{id}"
   end
 
   def self.set_database

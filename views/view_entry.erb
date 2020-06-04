@@ -1,7 +1,26 @@
-<h1><%= @entry.title %></h1>
+<head>
+  <link rel="stylesheet" href="./style.css">
+</head>
 
-<h2><%= @entry.date %></h2>
+<div>
+  <h1><%= @entry.title %></h1>
 
-<p><%= @entry.body %></p>
+  <h2><%= @entry.date %></h2>
 
-<p><%= @entry.tag %></p>
+  <p><%= @entry.body %></p>
+
+  <p><%= @entry.tag %></p>
+
+  <ul>
+    <li>
+      <form action="/edit_entry?id=<%=@entry.id%>">
+        <input type=submit value=edit>
+      </form>
+    </li>
+    <form action="/view_titles">
+      <input type=submit value=back>
+    </form>
+    <li>
+    </li>
+  </ul>
+</div>

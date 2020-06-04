@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'date'
 
 class Entry
 
@@ -10,6 +11,11 @@ class Entry
     @body = body
     @date = date
     @tag = tag
+  end
+
+  def format_date
+    date = Date.parse(@date)
+    date.strftime('%e %B %Y')
   end
 
 end

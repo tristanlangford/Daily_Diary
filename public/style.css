@@ -1,0 +1,30 @@
+div {
+  position: absolute;
+  background-color: #B9DEED;
+  font-family: Helvetica;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+form {
+  text-align: center;
+  margin: 35% auto 35% auto;
+
+}
+ul {
+  list-style: none;
+}
+.header {
+  font-weight: bold;
+  font-size: 20px
+}
+li {
+  margin: 10px auto auto auto;
+}
+.go {
+  width: 250px;
+}
+.name {
+  width: 250px;
+}

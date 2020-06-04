@@ -1,0 +1,39 @@
+<head>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<div>
+  <ul>
+    <form action="/edit" method=post>
+      <li>
+      <input type=date name=date value=<%=@entry.date%>>
+      </li>
+      <li>
+        <label for=title>Title:</label>
+        <input type=text name=title maxlength=30 value="<%=@entry.title%>">
+      </li>
+      <li>
+        <input type=text name=body maxlength=200 value="<%=@entry.body%>">
+      </li>
+      <li>
+        <label for=tag>Tag:</label>
+        <select name=tag>
+          <option value=5>Great</option>
+          <option value=4>Good</option>
+          <option value=3 selected>Meh..</option>
+          <option value=2>Bad</option>
+          <option value=1>Sh*t</option>
+        </select>
+        <input type=hidden name=id value=<%= @entry.id %>>
+      </li>
+      <li>
+        <input type=submit name="add entry" value="Add to Diary">
+        <a href="view_titles">Cancel</a>
+      </li>
+    </form>
+    <form action="/delete" method=post>
+      <input type=hidden name=id value=<%=@entry.id%>>
+      <input type=submit name=delete_entry value="Delete Entry">
+    </form>
+  </ul>
+</div>

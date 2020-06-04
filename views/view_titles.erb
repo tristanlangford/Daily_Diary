@@ -1,7 +1,17 @@
-<ul>
-<% @entries.each do |entry| %>
-  <li>
-    <a href='/view_entry?id=<%=entry.id%>'><%= entry.title %></a>
-  </li>
-<% end %>
-</ul>
+<head>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<div>
+  <ul>
+  <% @entries.each do |entry| %>
+    <li>
+      <a href='/view_entry?id=<%=entry.id%>'><%= entry.title %></a>
+      <%=entry.format_date%>
+    </li>
+  <% end %>
+  </ul>
+  <form action="/">
+    <input type=submit value=back>
+  </form>
+</div>

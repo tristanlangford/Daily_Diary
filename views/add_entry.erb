@@ -1,29 +1,35 @@
-<h1>Tell me about your day...</h1>
+<head>
+  <link rel="stylesheet" href="./style.css">
+</head>
 
-  <ul>
-    <form action="/add" method=post>
-      <li>
-      <input type=date name=date value=<%=@today%>>
-      </li>
-      <li>
-        <label for=title>Title:</label>
-        <input type=text name=title maxlength=30>
-      </li>
-      <li>
-        <input type=text name=body maxlength=200 value="Tell me about your day..">
-      </li>
-      <li>
-        <label for=tag>Tag:</label>
-        <select name=tag>
-          <option value=5>Great</option>
-          <option value=4>Good</option>
-          <option value=3>Meh..</option>
-          <option value=2>Bad</option>
-          <option value=1>Sh*t</option>
-        </select>
-      </li>
-      <li>
-        <input type=submit name="add entry" value="Add to Diary">
-      </li>
-    </form>
-  </ul>
+<div>
+  <h1>Tell me about your day...</h1>
+
+    <ul>
+      <form action="/add" method=post>
+        <li>
+        <input type=date name=date value=<%=@today%>>
+        </li>
+        <li>
+          <label for=title>Title:</label>
+          <input type=text name=title maxlength=30 required=required>
+        </li>
+        <li>
+          <input type=text name=body maxlength=200 value="Tell me about your day..">
+        </li>
+        <li>
+          <label for=tag>Tag:</label>
+          <select name=tag>
+            <option value=5>Great</option>
+            <option value=4>Good</option>
+            <option value=3>Meh..</option>
+            <option value=2>Bad</option>
+            <option value=1>Sh*t</option>
+          </select>
+        </li>
+        <li>
+          <input type=submit name="add entry" value="Add to Diary">
+        </li>
+      </form>
+    </ul>
+</div>
